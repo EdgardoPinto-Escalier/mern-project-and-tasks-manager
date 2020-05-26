@@ -112,6 +112,12 @@ a {
   margin-bottom: 5px;
 }
 
+.login-icon {
+  color: var(--dark-purple);
+  vertical-align: middle;
+  margin-bottom: 6px;
+}
+
 @media (min-width: 768px) {
   .container-app {
       display: flex;
@@ -338,7 +344,7 @@ aside  {
     max-width: 600px;
     width: 95%;
     background-color: var(--white);
-    border: 3px solid var(--grey);
+    border: 5px solid var(--grey);
     
 }
 
