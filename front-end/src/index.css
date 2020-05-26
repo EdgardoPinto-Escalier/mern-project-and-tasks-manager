@@ -1,13 +1,370 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --white: #ffffff;
+  --grey: #cccccc;
+  --grey-one: #edf2f6;
+  --grey-two: #2f3848;
+  --grey-three: #1a202d;
+  --black: #000000;
+  --light-purple: #8e24aa;
+  --dark-purple: #6a1b9a;
+  --headingFont:'Roboto', sans-serif;
+  --textFont:  'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*, *:before, *:after {
+  box-sizing: inherit;
+} 
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%; 
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--grey-one);
+  font-size: 16px; 
+  font-size: 1.6rem;
+  font-family: var(--textFont);
+}
+
+
+h1, h2 {
+  font-family: var(--headingFont);
+  font-weight: 900;
+  margin: 0 0 4rem 0;
+  text-align: center;
+  color: var(--gris2);
+}
+
+h1 span {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gris2);
+}
+
+/** BUTTONS **/
+.btn {
+  margin-top: 2rem;
+  font-family: var(--headingFont);
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+
+  border: none;
+  transition: background-color .3s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--dark-purple);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--light-purple);
+}
+
+.btn-secondary {
+  background-color: var(--grey-one);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-submit:hover {
+  background-color: var(--grey-two);
+}
+
+.btn-blank {
+  margin: 0;
+  padding: 0;
+  display: block;
+  background-color: transparent;
+}
+
+.fa-button {
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+@media (min-width: 768px) {
+  .container-app {
+      display: flex;
+      min-height: 100vh;
+  }
+
+  aside {
+      background-color: var(--white);
+      flex: 0 0 300px;
+  }
+
+  .seccion-main {
+      flex: 1;
+  }
+
+}
+
+
+/* SIDE BAR */
+aside  {
+  padding: 3rem;
+}
+
+.form-new-project {
+  margin-top: 6rem;
+}
+.form-new-project .input-text {
+  border-bottom: 1px solid var(--grey-two);
+  border-radius: 0;
+  background-color: var(--grey-one);
+}
+.form-new-project .input-text::placeholder{
+  color: var(--grey-two);
+}
+
+.projects {
+  margin-top: 10rem;
+}
+
+.project-list li {
+  margin-bottom: 2rem;
+}
+.project-list li a {
+  font-size: 1.4rem;
+  color: var(--grey-two);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--grey-two);
+  padding: 4rem;
+}
+
+.user-name {
+  color: var(--white);
+  font-size: 2.2rem;
+  margin: 0;
+}
+
+.user-name span {
+  font-weight: 900;
+}
+
+.main-nav a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.main-nav a:first-of-type {
+  margin-right: 2rem;
+}
+
+/** CREATE AND EDIT TASKS FORM **/
+.form {
+  background-color: var(--grey-three);
+  padding: 4rem;
+}
+.form form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container-input {
+  display: flex;
+}
+.container-input label {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+.input-text {
+  padding: 1rem;
+  border: none;
+  border-radius: .5rem;
+  flex: 1;
+  width: 100%;
+}
+
+/** TASK LIST **/
+.container-tasks {
+  padding: 4rem;
+}
+
+.task-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  padding: .5rem 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-radius: .5rem;
+}
+
+.shade {
+  -webkit-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+  -moz-box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+  box-shadow: 0px 4px 10px -3px rgba(117,117,117,1);
+}
+
+.shade-dark {
+  -webkit-box-shadow: 5px 5px 5px 5px rgba(142, 46, 231, 0.9);
+  -moz-box-shadow: 5px 5px 5px 5px rgba(142, 46, 231, 0.9);
+  box-shadow: 3px 3px 3px 3px rgba(142, 46, 231, 0.5);
+}
+
+.task .actions .btn:first-of-type {
+  margin-right: 1rem;
+}
+
+.task p {
+  font-size: 1.6rem;
+  flex: 1;
+  padding-right: 2rem;
+}
+.task .btn {
+  padding: .8rem;
+  font-size:1.4rem;
+  border-radius: 0;
+  margin: 0;
+}
+
+.status {
+  margin-right: 1rem;
+}
+
+.status button, 
+.message {
+  font-weight: 900;
+  font-family: var(--textFont);
+  font-size: 1rem;
+  padding: .5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  border: none;
+}
+
+.message {
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 0;
+}
+
+.message:hover {
+  cursor: default;
+}
+
+.complete,
+.correct {
+  background-color: rgba(154, 252, 154, .3);
+  color: var(--grey-three);
+}
+
+.incomplete{
+  background-color: rgba(255, 178, 178, .4);
+  color: var(--grey-three);
+}
+
+.error {
+  max-width: 600px;
+  margin: 2rem auto 0 auto;
+  background-color: rgb(170, 0, 0);
+  color: var(--white);
+}
+
+.enter-task,
+.enter-project {
+  opacity: 0;
+}
+
+.enter-task-active,
+.enter-project-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.exit-task,
+.exit-project {
+  opacity: 1;
+}
+
+.exit-task-active,
+.exit-project-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.user-form {
+    background-color: var(--white);
+    height: 100vh;
+    min-height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    padding: 5rem 3rem;
+    max-width: 600px;
+    width: 95%;
+    background-color: var(--white);
+    border: 3px solid var(--grey);
+    
+}
+
+.form-field {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+.form-field:last-of-type {
+  margin: 0;
+}
+.form-field label {
+  flex: 0 0 100px;
+  font-family: var(--textFont);
+}
+
+.form-field input[type="password"],
+.form-field input[type="email"], 
+.form-field input[type="text"] {
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  flex: 1;
+}
+
+.account-link {
+  margin-top: 2rem;
+  display: block;
+  opacity: .7;
 }
