@@ -1,7 +1,7 @@
 :root {
   --white: #ffffff;
   --grey: #cccccc;
-  --grey-one: #edf2f6;
+  --grey-one: #ecebeb;
   --grey-two: #2f3848;
   --grey-three: #1a202d;
   --black: #000000;
@@ -170,7 +170,7 @@ aside  {
 .app-header {
   display: flex;
   justify-content: space-between;
-  background-color: var(--grey-two);
+  background-color: var(--dark-purple);
   padding: 4rem;
 }
 
