@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../layout/Sidebar';
 import Navbar from '../layout/Navbar';
+import TaskForm from '../tasks/TaskForm';
 
 const Projects = () => {
   return (
@@ -10,6 +11,7 @@ const Projects = () => {
       <div className="seccion-main">
         <Navbar />
         <main>
+          <TaskForm />
           <div className="container-tasks">
 
           </div>
