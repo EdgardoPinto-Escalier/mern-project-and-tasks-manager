@@ -1,5 +1,6 @@
 import React from 'react';
 import Project from './Project';
+import { FaFolder } from 'react-icons/fa';
 
 const ProjectList = () => {
 
@@ -10,13 +11,16 @@ const ProjectList = () => {
   ]
 
   return (
+  
     <ul className="project-list">
       {projects.map(project => (
-        <Project
+        <Project 
           project={project}
+          
         />
       ))}
     </ul>
+    
   )
 }
 

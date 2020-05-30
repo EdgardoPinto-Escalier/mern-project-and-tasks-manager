@@ -96,7 +96,7 @@ a {
 }
 
 .btn-submit:hover {
-  background-color: var(--grey-two);
+  background-color: var(--light-purple);
 }
 
 .btn-blank {
@@ -195,7 +195,7 @@ aside  {
 
 /** CREATE AND EDIT TASKS FORM **/
 .form {
-  background-color: var(--grey-three);
+  background-color: var(--grey);
   padding: 4rem;
 }
 .form form {
@@ -212,7 +212,6 @@ aside  {
 .input-text {
   padding: 1rem;
   border: none;
-  border-radius: .5rem;
   flex: 1;
   width: 100%;
 }

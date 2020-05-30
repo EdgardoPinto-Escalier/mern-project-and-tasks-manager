@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { FaFolder, FaFolderPlus } from 'react-icons/fa';
 
 
 const NewProject = () => {
@@ -36,7 +37,7 @@ const NewProject = () => {
       <button
         type="button"
         className="btn btn-block btn-primary"
-      > NEW PROJECT</button>
+      > <FaFolder className="fa-button"/> NEW PROJECT</button>
 
       <form
         className="form-new-project"
@@ -54,7 +55,7 @@ const NewProject = () => {
         <button 
           type="submit"
           className="btn btn-block btn-primary"
-        >ADD PROJECT</button> 
+        ><FaFolderPlus className="fa-button"/> ADD PROJECT</button> 
 
       </form>
     </Fragment>
