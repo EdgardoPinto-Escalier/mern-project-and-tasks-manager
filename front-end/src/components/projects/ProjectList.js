@@ -1,6 +1,5 @@
 import React from 'react';
 import Project from './Project';
-import { FaFolder } from 'react-icons/fa';
 
 const ProjectList = () => {
 
