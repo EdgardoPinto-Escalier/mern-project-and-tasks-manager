@@ -4,7 +4,11 @@
   --grey-one: #ecebeb;
   --grey-two: #2f3848;
   --grey-three: #1a202d;
+  --dark-green-3: #2e7d32;
+  --dark-red-1: #e53935;
+  --ligth-red-2: #e57373;
   --black: #000000;
+  --light-purple-2: #ba68c8 ;
   --light-purple: #8e24aa;
   --dark-purple: #6a1b9a;
   --headingFont:'Roboto', sans-serif;
@@ -35,7 +39,6 @@ h1, h2 {
   font-weight: 900;
   margin: 0 0 4rem 0;
   text-align: center;
-  color: var(--gris2);
 }
 
 h1 span {
@@ -58,7 +61,6 @@ ul {
 
 a {
   text-decoration: none;
-  color: var(--gris2);
 }
 
 /** BUTTONS **/
@@ -68,7 +70,7 @@ a {
   padding: 1.5rem;
   font-size: 1.8rem;
   font-weight: bold;
-
+  outline: none;
   border: none;
   transition: background-color .3s ease;
 }
@@ -80,10 +82,11 @@ a {
 .btn-primary {
   background-color: var(--dark-purple);
   color: var(--white);
+  transition: .2s ease;
 }
 
 .btn-primary:hover {
-  background: var(--light-purple);
+  box-shadow: 5px 5px 1px var(--light-purple-2);
 }
 
 .btn-secondary {
@@ -93,6 +96,16 @@ a {
 .btn-block {
   display: block;
   width: 100%;
+}
+
+.btn-remove {
+  background-color: var(--dark-red-1);
+  color: var(--white);
+  transition: .2s ease;
+}
+
+.btn-remove:hover {
+  box-shadow: 5px 5px 1px var(--ligth-red-2);
 }
 
 .btn-submit:hover {
@@ -289,15 +302,15 @@ aside  {
   cursor: default;
 }
 
-.complete,
+.done,
 .correct {
-  background-color: rgba(154, 252, 154, .3);
-  color: var(--grey-three);
+  background-color: var(--dark-green-3);
+  color: var(--white);
 }
 
-.incomplete{
-  background-color: rgba(255, 178, 178, .4);
-  color: var(--grey-three);
+.pending{
+  background-color: var(--dark-red-1);
+  color: var(--white);
 }
 
 .error {

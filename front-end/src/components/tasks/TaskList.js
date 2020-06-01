@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Task from './Task';
+import { FaRegTrashAlt } from 'react-icons/fa';
 
 const TaskList = () => {
 
@@ -23,6 +24,10 @@ const TaskList = () => {
               />
           ))
         }
+        <button
+          type="button"
+          className="btn btn-remove"
+        ><FaRegTrashAlt className="fa-button"/>REMOVE PROJECT</button>
       </ul>
     </Fragment>
   );
