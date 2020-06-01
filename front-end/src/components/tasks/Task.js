@@ -29,7 +29,7 @@ export default function Task({task}) {
       <div className="actions">
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary-edit-task"
         >EDIT</button>
         <button
           type="button"
