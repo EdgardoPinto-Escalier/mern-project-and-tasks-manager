@@ -11,7 +11,7 @@ const ProjectState = props => {
   // Here we create a dispatch to execute the actions
   const [state, dispatch] = useReducer(projectReducer, initialState)
 
-  // CRUD Functions
+  // CRUD Functionality
   return(
     <projectContext.Provider
       value={{
