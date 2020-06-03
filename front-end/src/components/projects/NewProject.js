@@ -6,11 +6,11 @@ const NewProject = () => {
 
   // Here we get the form state
   const projectsContext = useContext(projectContext);
-  const { form, showForm, addProject } = projectsContext;
+  const { form, formerror, showForm, addProject, showError } = projectsContext;
 
   // State for the project
   const [project, saveProject] = useState({
-    name: ''
+    name: "",
   });
 
   // Extract project name 
@@ -30,6 +30,7 @@ const NewProject = () => {
     
     // Validate project
     if(name === '') {
+      showError();
       return;
     }
 
@@ -80,8 +81,9 @@ const NewProject = () => {
               ><FaFolderPlus className="fa-button" /> ADD PROJECT</button>
 
             </form>
-        ) : null
-      }
+        ) : null }
+
+        {formerror ? <p className="message error">PROJECT NAME IS REQUIRED</p> : null}
     </Fragment>
   );
 }

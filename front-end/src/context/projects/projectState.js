@@ -3,7 +3,7 @@ import {v4 as uuid } from 'uuid';
 
 import projectContext from './projectContext';
 import projectReducer from './projectReducer';
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT } from '../../types';
+import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM } from '../../types';
 
 const ProjectState = props => {
   const projects = [
@@ -13,7 +13,8 @@ const ProjectState = props => {
   ]
   const initialState = {
     projects: [],
-    form: false
+    form: false,
+    formerror: false
   }
 
   // Here we create a dispatch to execute the actions
@@ -45,15 +46,24 @@ const ProjectState = props => {
     })
   }
 
+  // Error form validation
+  const showError = () => {
+    dispatch({
+      type: VALIDATE_FORM
+    })
+  }
+
 
   return(
     <projectContext.Provider
       value={{
         projects: state.projects,
         form: state.form,
+        formerror: state.formerror,
         showForm,
         getProjects,
-        addProject
+        addProject,
+        showError
       }}
     >
       {props.children}

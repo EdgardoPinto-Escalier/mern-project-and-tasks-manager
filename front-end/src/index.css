@@ -323,9 +323,9 @@ aside  {
 
 .error {
   max-width: 600px;
-  margin: 2rem auto 0 auto;
-  background-color: rgb(170, 0, 0);
-  color: var(--white);
+  margin: .5rem auto 0 auto;
+  
+  color: var(--dark-red-1);
 }
 
 .enter-task,
