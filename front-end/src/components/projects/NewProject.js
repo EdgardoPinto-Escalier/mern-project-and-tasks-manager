@@ -1,8 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
+import projectContext from '../../context/projects/projectContext';
 import { FaFolder, FaFolderPlus } from 'react-icons/fa';
 
-
 const NewProject = () => {
+
+  // Here we get the form state
+  const projectsContext = useContext(projectContext);
+  const { form } = projectsContext;
 
   // State for the project
   const [project, saveProject] = useState({
@@ -39,25 +43,31 @@ const NewProject = () => {
         className="btn btn-block btn-primary"
       > <FaFolder className="fa-button"/> NEW PROJECT</button>
 
-      <form
-        className="form-new-project"
-        onSubmit={onSubmitProject}
-      >
-        <input 
-          type="text"
-          className="input-text"
-          placeholder="Project Name"
-          name="name"
-          value={name}
-          onChange={onChangeProject}
-        />
+      {
+        form
+        ? 
+          (
+            <form
+              className="form-new-project"
+              onSubmit={onSubmitProject}
+            >
+              <input
+                type="text"
+                className="input-text"
+                placeholder="Project Name"
+                name="name"
+                value={name}
+                onChange={onChangeProject}
+              />
 
-        <button 
-          type="submit"
-          className="btn btn-block btn-primary"
-        ><FaFolderPlus className="fa-button"/> ADD PROJECT</button> 
+              <button
+                type="submit"
+                className="btn btn-block btn-primary"
+              ><FaFolderPlus className="fa-button" /> ADD PROJECT</button>
 
-      </form>
+            </form>
+        ) : null
+      }
     </Fragment>
   );
 }
