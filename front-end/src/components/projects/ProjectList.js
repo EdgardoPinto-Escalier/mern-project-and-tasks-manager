@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Project from './Project';
 import projectContext from '../../context/projects/projectContext';
 
@@ -6,7 +6,12 @@ const ProjectList = () => {
 
   // Here we extract the projects from the initial state
   const projectsContext = useContext(projectContext);
-  const { projects } = projectsContext;
+  const { projects, getProjects } = projectsContext;
+
+  // Get projects when the component is ready
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   // Small check to see if projects has any content
   if(projects.length === 0) return null;
