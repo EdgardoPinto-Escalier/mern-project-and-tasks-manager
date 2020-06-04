@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import projectContext from '../../context/projects/projectContext';
 import { FaClipboardCheck } from 'react-icons/fa';
 
 const TaskForm = () => {
+  const projectsContext = useContext(projectContext);
+  const { project } = projectsContext;
+
+  // If there is not project selected...
+  if (!project) return null;
+
+  // Array destructuring to extract current project
+  const [currentProject] = project;
+
   return (
     <div className="form">
       <form>
@@ -18,7 +28,6 @@ const TaskForm = () => {
           <button 
             type="text"
             className="btn btn-primary btn-submit btn-block"
-            value="Add Task"
           >
             <FaClipboardCheck className="fa-button"/> ADD NEW TASK
           </button>

@@ -117,10 +117,6 @@ a {
   box-shadow: 5px 5px 1px var(--ligth-red-2);
 }
 
-.btn-submit:hover {
-  background-color: var(--light-purple);
-}
-
 .btn-blank {
   margin: 0;
   padding: 0;
