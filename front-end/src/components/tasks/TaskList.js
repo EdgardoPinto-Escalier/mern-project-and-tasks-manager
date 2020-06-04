@@ -6,7 +6,7 @@ import { FaRegTrashAlt, FaFolderPlus } from 'react-icons/fa';
 const TaskList = () => {
 
   const projectsContext = useContext(projectContext);
-  const { project } = projectsContext;
+  const { project, deleteProject } = projectsContext;
 
   // If there is not project selected...
   if (!project) return <h2><FaFolderPlus className="fa-button"/> PLEASE SELECT A PROJECT</h2>;
@@ -20,6 +20,11 @@ const TaskList = () => {
     { name: 'Choose Payment Platform', status: false },
     { name: 'Choose Deployment Method', status: true },
   ];
+
+  // Delete a project
+  const onClickEliminar = () => {
+    deleteProject(currentProject.id);
+  }
 
   return (
     <Fragment>
@@ -37,6 +42,7 @@ const TaskList = () => {
         <button
           type="button"
           className="btn btn-remove"
+          onClick={onClickEliminar}
         ><FaRegTrashAlt className="fa-button"/>REMOVE PROJECT</button>
       </ul>
     </Fragment>

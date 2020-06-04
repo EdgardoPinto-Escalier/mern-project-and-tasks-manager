@@ -136,6 +136,10 @@ a {
   margin-bottom: 6px;
 }
 
+.purple {
+  color: var(--dark-purple);
+}
+
 @media (min-width: 768px) {
   .container-app {
       display: flex;
@@ -177,6 +181,7 @@ aside  {
 
 .project-list li {
   margin-bottom: 2rem;
+  margin-left: 2rem;
 }
 .project-list li a {
   font-size: 1.4rem;

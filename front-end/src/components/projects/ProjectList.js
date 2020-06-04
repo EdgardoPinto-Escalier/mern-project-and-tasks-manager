@@ -14,7 +14,7 @@ const ProjectList = () => {
   }, []);
 
   // Small check to see if projects has any content
-  if(projects.length === 0) return null;
+  if(projects.length === 0) return <p className="message error">NO PROJECTS AVAILABLE START CREATING ONE</p>;
 
   return (
     <ul className="project-list">
