@@ -3,7 +3,13 @@ import {v4 as uuid } from 'uuid';
 
 import projectContext from './projectContext';
 import projectReducer from './projectReducer';
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM } from '../../types';
+import { 
+  PROJECT_FORM, 
+  GET_PROJECTS, 
+  ADD_PROJECT, 
+  VALIDATE_FORM,
+  CURRENT_PROJECT
+} from '../../types';
 
 const ProjectState = props => {
   const projects = [
@@ -11,10 +17,12 @@ const ProjectState = props => {
     { id: 2, name: 'React Interface' },
     { id: 3, name: 'FlexBox Gallery' }
   ]
+
   const initialState = {
     projects: [],
     form: false,
-    formerror: false
+    formerror: false,
+    project: null
   }
 
   // Here we create a dispatch to execute the actions
@@ -53,6 +61,14 @@ const ProjectState = props => {
     })
   }
 
+  // Selects projects
+  const currentProject = projectId => {
+    dispatch({
+      type: CURRENT_PROJECT,
+      payload: projectId
+    })
+  }
+
 
   return(
     <projectContext.Provider
@@ -60,10 +76,12 @@ const ProjectState = props => {
         projects: state.projects,
         form: state.form,
         formerror: state.formerror,
+        project: state.project,
         showForm,
         getProjects,
         addProject,
-        showError
+        showError,
+        currentProject
       }}
     >
       {props.children}

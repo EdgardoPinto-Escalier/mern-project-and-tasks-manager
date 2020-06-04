@@ -1,8 +1,18 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import Task from './Task';
-import { FaRegTrashAlt } from 'react-icons/fa';
+import projectContext from '../../context/projects/projectContext';
+import { FaRegTrashAlt, FaFolderPlus } from 'react-icons/fa';
 
 const TaskList = () => {
+
+  const projectsContext = useContext(projectContext);
+  const { project } = projectsContext;
+
+  // If there is not project selected...
+  if (!project) return <h2><FaFolderPlus className="fa-button"/> PLEASE SELECT A PROJECT</h2>;
+
+  // Array destructuring to extract current project
+  const [currentProject] = project;
 
   const projectTasks = [
     { name: 'Choose Front-End Library', status: true},
@@ -13,7 +23,7 @@ const TaskList = () => {
 
   return (
     <Fragment>
-      <h2>Project: Laravel Site</h2>
+      <h2>Project: {currentProject.name}</h2>
 
       <ul className="task-list">
         {projectTasks.length === 0
