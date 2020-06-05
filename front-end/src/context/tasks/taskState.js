@@ -11,7 +11,9 @@ const TaskState = props => {
       { name: 'Choose Colors', status: false, projectId: 2 },
       { name: 'Choose Payment Platform', status: false, projectId: 3 },
       { name: 'Choose Deployment Method', status: true, projectId: 4 },
+      { name: 'Get Materialize color palette', status: true, projectId: 1 }
     ],
+    projecttasks: null
   }
 
   // Create dispatch and state
@@ -32,6 +34,7 @@ const TaskState = props => {
     <TaskContext.Provider
       value={{
         tasks: state.taks,
+        projecttasks: state.projecttasks,
         getTasks
       }}
     >
