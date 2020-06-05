@@ -14,12 +14,7 @@ const TaskList = () => {
   // Array destructuring to extract current project
   const [currentProject] = project;
 
-  const projectTasks = [
-    { name: 'Choose Front-End Library', status: true},
-    { name: 'Choose Colors', status: false },
-    { name: 'Choose Payment Platform', status: false },
-    { name: 'Choose Deployment Method', status: true },
-  ];
+  const projectTasks = [];
 
   // Delete a project
   const onClickEliminar = () => {
