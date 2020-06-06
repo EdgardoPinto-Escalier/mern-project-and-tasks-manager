@@ -12,9 +12,24 @@ const TaskForm = () => {
   // Array destructuring to extract current project
   const [currentProject] = project;
 
+  const onSubmit = e => {
+    e.preventDefault();
+    
+    // First we validate
+
+    // Then we pass the validation
+
+    // After that we add the new task to the task state
+
+    // Finally we restart the form
+
+  }
+
   return (
     <div className="form">
-      <form>
+      <form
+        onSubmit={onSubmit}
+      >
         <div className="container-input">
           <input 
             type="text"
