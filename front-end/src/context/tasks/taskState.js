@@ -3,7 +3,8 @@ import TaskContext from './taskContext';
 import TaskReducer from './taskReducer';
 import { 
   PROJECT_TASKS, 
-  ADD_TASK 
+  ADD_TASK,
+  VALIDATE_TASK
 } from '../../types';
 
 
@@ -16,7 +17,8 @@ const TaskState = props => {
       { name: 'Choose Deployment Method', status: true, projectId: 4 },
       { name: 'Get Materialize color palette', status: true, projectId: 1 }
     ],
-    projecttasks: null
+    projecttasks: null,
+    errortask: false
   }
 
   // Create dispatch and state
@@ -41,13 +43,22 @@ const TaskState = props => {
     })
   }
 
+  // Validate and show error in case is needed
+  const validateTask = () => {
+    dispatch({
+      type: VALIDATE_TASK
+    })
+  }
+
   return (
     <TaskContext.Provider
       value={{
         tasks: state.taks,
         projecttasks: state.projecttasks,
+        errortask: state.errortask,
         getTasks,
-        addTask
+        addTask,
+        validateTask
       }}
     >
       {props.children}

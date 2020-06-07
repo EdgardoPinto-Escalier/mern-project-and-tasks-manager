@@ -1,6 +1,7 @@
 import {  
     PROJECT_TASKS, 
-    ADD_TASK
+    ADD_TASK,
+    VALIDATE_TASK
 } from '../../types';
 
 
@@ -15,9 +16,14 @@ export default (state, action) => {
     case ADD_TASK:
       return {
         ...state,
-        tasks: [...state.tasks, action.payload]
+        tasks: [...state.tasks, action.payload],
+        errortask: false
       }
-
+    case VALIDATE_TASK:
+      return {
+        ...state,
+        errortask: true
+      }
     default:
       return state;
   }
