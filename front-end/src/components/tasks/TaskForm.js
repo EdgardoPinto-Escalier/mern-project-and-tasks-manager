@@ -4,6 +4,7 @@ import taskContext from '../../context/tasks/taskContext';
 import { FaClipboardCheck } from 'react-icons/fa';
 
 const TaskForm = () => {
+  
   const projectsContext = useContext(projectContext);
   const { project } = projectsContext;
 

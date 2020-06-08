@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
 
-export default function Task({task}) {
+const Task = ({task}) => {
+
   const projectsContext = useContext(projectContext);
   const { project } = projectsContext;
 
@@ -47,6 +48,7 @@ export default function Task({task}) {
           type="button"
           className="btn btn-primary-edit-task"
         >EDIT</button>
+
         <button
           type="button"
           className="btn btn-secondary"
@@ -54,5 +56,7 @@ export default function Task({task}) {
         >REMOVE</button>
       </div>
     </li>
-  )
+  );
 }
+
+export default Task;

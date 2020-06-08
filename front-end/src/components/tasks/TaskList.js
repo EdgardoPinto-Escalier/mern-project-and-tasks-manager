@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react';
 import Task from './Task';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { FaRegTrashAlt, FaFolderPlus } from 'react-icons/fa';
 
 const TaskList = () => {
@@ -30,20 +31,32 @@ const TaskList = () => {
       <h2>Project: {currentProject.name}</h2>
 
       <ul className="task-list">
-        {projecttasks.length === 0
-          ? (<li className="task"><p>No Tasks</p></li>)
-          : projecttasks.map(task => (
-              <Task
-                key={task.id}
-                task={task}
-              />
-          ))
+        {projecttasks.length === 0 
+          ? (<li className="task"><p>NO TASKS</p></li>) 
+          : 
+          <TransitionGroup>
+          {projecttasks.map(task => (
+              <CSSTransition 
+                  key={task.id} 
+                  timeout={200} 
+                  classNames="task"
+              >
+                <Task 
+                  task={task} 
+                />
+              </CSSTransition>
+          ))}
+          </TransitionGroup>
         }
+        
         <button
           type="button"
           className="btn btn-remove"
           onClick={onClickEliminar}
-        ><FaRegTrashAlt className="fa-button"/>REMOVE PROJECT</button>
+        >
+          <FaRegTrashAlt className="fa-button" />
+          REMOVE PROJECT
+        </button>
       </ul>
     </Fragment>
   );
