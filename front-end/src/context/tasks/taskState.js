@@ -4,18 +4,19 @@ import TaskReducer from './taskReducer';
 import { 
   PROJECT_TASKS, 
   ADD_TASK,
-  VALIDATE_TASK
+  VALIDATE_TASK,
+  DELETE_TASK
 } from '../../types';
 
 
 const TaskState = props => {
   const initialState = {
     tasks: [
-      { name: 'Choose Front-End Library', status: true, projectId: 1 },
-      { name: 'Choose Colors', status: false, projectId: 2 },
-      { name: 'Choose Payment Platform', status: false, projectId: 3 },
-      { name: 'Choose Deployment Method', status: true, projectId: 4 },
-      { name: 'Get Materialize color palette', status: true, projectId: 1 }
+      { id: 1, name: 'Choose Front-End Library', status: true, projectId: 1 },
+      { id: 2, name: 'Choose Colors', status: false, projectId: 2 },
+      { id: 3, name: 'Choose Payment Platform', status: false, projectId: 3 },
+      { id: 4, name: 'Choose Deployment Method', status: true, projectId: 4 },
+      { id: 5, name: 'Get Materialize color palette', status: true, projectId: 1 }
     ],
     projecttasks: null,
     errortask: false
@@ -50,6 +51,14 @@ const TaskState = props => {
     })
   }
 
+  // Delete task via ID
+  const deleteTask = id => {
+    dispatch({
+      type: DELETE_TASK,
+      payload: id
+    })
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -58,7 +67,8 @@ const TaskState = props => {
         errortask: state.errortask,
         getTasks,
         addTask,
-        validateTask
+        validateTask,
+        deleteTask
       }}
     >
       {props.children}
