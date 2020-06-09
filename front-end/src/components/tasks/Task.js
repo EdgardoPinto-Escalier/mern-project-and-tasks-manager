@@ -8,7 +8,7 @@ const Task = ({task}) => {
   const { project } = projectsContext;
 
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getTasks } = tasksContext;
+  const { deleteTask, getTasks, changeTaskStatus } = tasksContext;
 
   const [currentProject] = project;
 
@@ -16,6 +16,16 @@ const Task = ({task}) => {
   const removeTask = id => {
     deleteTask(id);
     getTasks(currentProject.id);
+  }
+
+  // Function that modifies the tasks status
+  const changeStatus = task => {
+    if(task.status) {
+      task.status = false;
+    } else {
+      task.status = true;
+    }
+    changeTaskStatus(task);
   }
 
   return (
@@ -28,6 +38,7 @@ const Task = ({task}) => {
             <button
               type="button"
               className="done"
+              onClick={() => changeStatus(task)}
             >
               DONE
             </button>
@@ -37,6 +48,7 @@ const Task = ({task}) => {
             <button
               type="button"
               className="pending"
+              onClick={() => changeStatus(task)}
             >
               PENDING
             </button>
