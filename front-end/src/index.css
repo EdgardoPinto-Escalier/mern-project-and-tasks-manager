@@ -328,24 +328,24 @@ aside  {
   color: var(--dark-red-1);
 }
 
-.enter-task,
-.enter-project {
+.task-enter,
+.project-enter {
   opacity: 0;
 }
 
-.enter-task-active,
-.enter-project-active {
+.task-enter-active,
+.project-enter-active {
   opacity: 1;
   transition: opacity 200ms;
 }
 
-.exit-task,
-.exit-project {
+.task-exit,
+.project-exit {
   opacity: 1;
 }
 
-.exit-task-active,
-.exit-project-active {
+.task-exit-active,
+.project-exit-active {
   opacity: 0;
   transition: opacity 200ms;
 }
