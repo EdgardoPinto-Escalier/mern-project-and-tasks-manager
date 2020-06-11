@@ -6,7 +6,8 @@ import {
   ADD_TASK,
   VALIDATE_TASK,
   DELETE_TASK,
-  TASK_STATUS
+  TASK_STATUS,
+  CURRENT_TASK
 } from '../../types';
 
 
@@ -20,7 +21,8 @@ const TaskState = props => {
       { id: 5, name: 'Get Materialize color palette', status: true, projectId: 1 }
     ],
     projecttasks: null,
-    errortask: false
+    errortask: false,
+    selectedTask: null
   }
 
   // Create dispatch and state
@@ -68,17 +70,27 @@ const TaskState = props => {
     })
   }
 
+  // Extract a given task for edition
+  const saveCurrentTask = task => {
+    dispatch({
+      type: CURRENT_TASK,
+      payload: task
+    })
+  }
+
   return (
     <TaskContext.Provider
       value={{
         tasks: state.taks,
         projecttasks: state.projecttasks,
         errortask: state.errortask,
+        selectedTask: state.selectedTask,
         getTasks,
         addTask,
         validateTask,
         deleteTask,
-        changeTaskStatus
+        changeTaskStatus,
+        saveCurrentTask
       }}
     >
       {props.children}

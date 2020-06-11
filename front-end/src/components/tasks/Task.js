@@ -8,7 +8,7 @@ const Task = ({task}) => {
   const { project } = projectsContext;
 
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getTasks, changeTaskStatus } = tasksContext;
+  const { deleteTask, getTasks, changeTaskStatus, saveCurrentTask } = tasksContext;
 
   const [currentProject] = project;
 
@@ -26,6 +26,11 @@ const Task = ({task}) => {
       task.status = true;
     }
     changeTaskStatus(task);
+  }
+
+  // Add a current task when the user wants to edit it
+  const selectTask = tarea => {
+    saveCurrentTask(task);
   }
 
   return (
@@ -59,6 +64,7 @@ const Task = ({task}) => {
         <button
           type="button"
           className="btn btn-primary-edit-task"
+          onClick={ () => selectTask(task) }
         >EDIT</button>
 
         <button
