@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import projectContext from '../../context/projects/projectContext';
 import taskContext from '../../context/tasks/taskContext';
 import { FaClipboardCheck } from 'react-icons/fa';
@@ -9,7 +9,18 @@ const TaskForm = () => {
   const { project } = projectsContext;
 
   const tasksContext = useContext(taskContext);
-  const { errortask, addTask, validateTask, getTasks } = tasksContext;
+  const { selectedTask, errortask, addTask, validateTask, getTasks } = tasksContext;
+
+  // Effect that detects if a task has been selected
+  useEffect(() => {
+    if(selectedTask !== null) {
+      saveTask(selectedTask)
+    } else {
+      saveTask({
+        name: ''
+      })
+    }
+  }, [selectedTask]);
 
   // Form state
   const [task, saveTask] = useState({
@@ -78,7 +89,7 @@ const TaskForm = () => {
             type="text"
             className="btn btn-primary btn-submit btn-block"
           >
-            <FaClipboardCheck className="fa-button"/> ADD NEW TASK
+            <FaClipboardCheck className="fa-button" /> {selectedTask ? 'EDIT TASK' : 'ADD NEW TASK'} 
           </button>
         </div>
       </form>
