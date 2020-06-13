@@ -9,7 +9,7 @@ const TaskForm = () => {
   const { project } = projectsContext;
 
   const tasksContext = useContext(taskContext);
-  const { selectedTask, errortask, addTask, validateTask, getTasks, updateTask } = tasksContext;
+  const { selectedTask, errortask, addTask, validateTask, getTasks, updateTask, cleanTask } = tasksContext;
 
   // Effect that detects if a task has been selected
   useEffect(() => {
@@ -63,6 +63,8 @@ const TaskForm = () => {
     } else {
         // Update existent task
         updateTask(task);
+        // Clean selected task from the state
+        cleanTask();
     }
 
     // Get and filter the project tasks

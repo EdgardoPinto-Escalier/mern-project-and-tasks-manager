@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import TaskContext from './taskContext';
 import TaskReducer from './taskReducer';
+import { v4 as uuid } from 'uuid';
 import { 
   PROJECT_TASKS, 
   ADD_TASK,
@@ -8,7 +9,8 @@ import {
   DELETE_TASK,
   TASK_STATUS,
   CURRENT_TASK,
-  UPDATE_TASK
+  UPDATE_TASK,
+  CLEAN_TASK
 } from '../../types';
 
 
@@ -29,9 +31,6 @@ const TaskState = props => {
   // Create dispatch and state
   const [state, dispatch] = useReducer(TaskReducer, initialState);
 
-  // Create the functions here
-
-
   // Get the project tasks
   const getTasks = projectId => {
     dispatch({
@@ -42,6 +41,7 @@ const TaskState = props => {
 
   // Add a task to the selected project
   const addTask = task => {
+    task.id = uuid();
     dispatch({
       type: ADD_TASK,
       payload: task
@@ -87,6 +87,13 @@ const TaskState = props => {
     })
   }
 
+  // Clean selected task
+  const cleanTask = () => {
+    dispatch({
+      type: CLEAN_TASK
+    })
+  }
+
   return (
     <TaskContext.Provider
       value={{
@@ -100,7 +107,8 @@ const TaskState = props => {
         deleteTask,
         changeTaskStatus,
         saveCurrentTask,
-        updateTask
+        updateTask,
+        cleanTask
       }}
     >
       {props.children}
