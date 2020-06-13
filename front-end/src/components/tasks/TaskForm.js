@@ -9,7 +9,7 @@ const TaskForm = () => {
   const { project } = projectsContext;
 
   const tasksContext = useContext(taskContext);
-  const { selectedTask, errortask, addTask, validateTask, getTasks } = tasksContext;
+  const { selectedTask, errortask, addTask, validateTask, getTasks, updateTask } = tasksContext;
 
   // Effect that detects if a task has been selected
   useEffect(() => {
@@ -54,10 +54,16 @@ const TaskForm = () => {
       return;
     }
 
-    // After that we add the new task to the task state
-    task.projectId = currentProject.id;
-    task.state = false;
-    addTask(task);
+    // Small check to see if the task is new or for edit
+    if(selectedTask === null) {
+      // After that we add the new task to the task state
+      task.projectId = currentProject.id;
+      task.state = false;
+      addTask(task);
+    } else {
+        // Update existent task
+        updateTask(task);
+    }
 
     // Get and filter the project tasks
     getTasks(currentProject.id);
