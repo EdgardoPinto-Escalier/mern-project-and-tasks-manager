@@ -25,3 +25,14 @@ exports.createProject = async (req, res) => {
     res.status(500).send('Something went wrong');
   }
 }
+
+// Here we get all projects from current user
+exports.getProjects = async (req, res) => {
+  try {
+      const projects = await Project.find({ createdBy: req.user.id }).sort({createdOn: -1});
+      res.json({ projects });
+  } catch (error) {
+      console.log(error);
+      res.status(500).send('Something went wrong');
+  }
+}
