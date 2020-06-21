@@ -38,7 +38,7 @@ exports.getProjects = async (req, res) => {
 }
 
 // Edit/Update an existing project
-exports.updateProject = async(req, res) => {
+exports.updateProject = async (req, res) => {
 
   // Check if there are any errors
   const errors = validationResult(req);
@@ -55,12 +55,18 @@ exports.updateProject = async(req, res) => {
 
   try {
     // Check the ID
-
+    let project = await Project.findById(req.params.id);
     // Check if the project exists
-
+    if(!project) {
+      res.status(404).json({msg: 'Project not found'});
+    }
     // Verify project creator
-
+    if(project.createdBy.toString() !== req.user.id) {
+      return res.status(401).json({msg: 'Unauthorized'});
+    }
     // Update project
+    project = await Project.findByIdAndUpdate({ _id: req.params.id }, { $set : newProject }, { new: true });
+    res.json({project});
     
   } catch (error) {
     console.log(error);
