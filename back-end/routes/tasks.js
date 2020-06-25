@@ -15,4 +15,10 @@ router.post('/',
   taskController.createTask
 );
 
+// Get tasks per project
+router.get('/',
+  authentication,
+  taskController.getTasks
+);
+
 module.exports = router;

@@ -11,9 +11,11 @@ exports.createTask = async (req, res) => {
     return res.status(400).json({ errors: errors.array() })
   }
 
-  // Extract the project and check if exists
-  const { project } = req.body;
+ 
   try {
+
+    // Extract the project and check if exists
+    const { project } = req.body;
 
     const projectExist = await Project.findById(project);
     if(!projectExist) {
@@ -33,5 +35,31 @@ exports.createTask = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send('Something went wrong')
+  }
+}
+
+exports.getTasks = async (req, res) => {
+  
+  try {
+    // Extract the project and check if exists
+    const { project } = req.body;
+
+    const projectExist = await Project.findById(project);
+    if (!projectExist) {
+      return res.status(404).json({ msg: 'Project not found' })
+    }
+
+    // Check that the current project belongs to the authenticated user
+    if (projectExist.createdBy.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized' });
+    }
+
+    // Get tasks per project
+    const tasks = await Task.find({ project });
+    res.json({ tasks });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Something went wrong');
   }
 }
