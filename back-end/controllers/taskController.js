@@ -63,3 +63,39 @@ exports.getTasks = async (req, res) => {
     res.status(500).send('Something went wrong');
   }
 }
+
+// Update task
+exports.updateTask = async (req, res) => {
+  try {
+    // Extract the project and check if exists
+    const { project, name, status } = req.body;
+
+    // Check if the task really exixts
+    let task = await Task.findById(req.params.id);
+
+    if(!task) {
+      return res.status(401).json({ msg: 'There is not such task' });
+    }
+
+    // Extract project
+    const projectExist = await Project.findById(project);
+
+    // Check that the current project belongs to the authenticated user
+    if (projectExist.createdBy.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized' });
+    }
+
+    // Create an object with the new info
+    const newTask = {};
+    if(name) newTask.name = name;
+    if (status) newTask.status = status;
+
+    // Save task
+    task = await Task.findOneAndUpdate({_id : req.params.id }, newTask, { new: true });
+    res.json({task})
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Something went wrong')
+  }
+}
