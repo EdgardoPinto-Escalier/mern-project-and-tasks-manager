@@ -11,7 +11,6 @@ exports.createTask = async (req, res) => {
     return res.status(400).json({ errors: errors.array() })
   }
 
- 
   try {
 
     // Extract the project and check if exists
@@ -38,6 +37,7 @@ exports.createTask = async (req, res) => {
   }
 }
 
+// Get tasks
 exports.getTasks = async (req, res) => {
   
   try {
