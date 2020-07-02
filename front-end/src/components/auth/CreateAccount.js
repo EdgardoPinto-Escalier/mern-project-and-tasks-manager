@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../context/alerts/alertContext';
 import { FaUserEdit } from "react-icons/fa";
 
+
 const CreateAccount = () => {
+
+  // Extract context values
+  const alertContext = useContext(AlertContext);
+  const { alert, showAlert } = alertContext;
 
   // State for the login session
   const [user, saveUser] = useState({
@@ -27,7 +33,12 @@ const CreateAccount = () => {
     e.preventDefault();
 
     // Validation against empty fields
-
+    if (name.trim() === '' || 
+        email.trim() === '' || 
+        password.trim() === '' || 
+        repeatPassword.trim() === '') {
+          showAlert('All fields are required', 'alert-error');
+        }
     // Validation for at least 6 characters
 
     // Validation check that password match
@@ -38,6 +49,7 @@ const CreateAccount = () => {
 
   return (
     <div className="user-form">
+      { alert ? ( <div className={`alert ${alert.category}`}>{alert.msg}</div> ) : null }
       <div className="form-container">
         <h1>
           <FaUserEdit className="login-icon" /> CREATE NEW ACCOUNT
