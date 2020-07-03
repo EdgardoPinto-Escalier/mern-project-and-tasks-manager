@@ -404,15 +404,15 @@ aside  {
   font-family: var(--headingFont);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   text-align: center;
   width: 100%;
 }
 @media (min-width:768px) {
   .alert {
       width: auto;
-      top: 80%;
-      right: 41%;
+      top: 2%;
+      right: 1%;
       left: auto;
   }
 }

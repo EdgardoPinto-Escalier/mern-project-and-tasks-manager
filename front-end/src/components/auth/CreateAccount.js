@@ -34,14 +34,24 @@ const CreateAccount = () => {
 
     // Validation against empty fields
     if (name.trim() === '' || 
-        email.trim() === '' || 
-        password.trim() === '' || 
-        repeatPassword.trim() === '') {
-          showAlert('All fields are required', 'alert-error');
-        }
+      email.trim() === '' || 
+      password.trim() === '' || 
+      repeatPassword.trim() === '') {
+      showAlert('All fields are required', 'alert-error');
+      return;
+    }
+
     // Validation for at least 6 characters
+    if(password.length < 6) {
+      showAlert('The password must be at least 6 characters long', 'alert-error');
+      return;
+    }
 
     // Validation check that password match
+    if(password !== repeatPassword) {
+      showAlert('The passwords should match', 'alert-error');
+      return;
+    }
 
     // Pass to action
 
