@@ -1,17 +1,16 @@
-import { SHOW_ALERT, HIDE_ALERT } from '../../types';
+import {
+  SUCCESSFULL_REGISTER,
+  ERROR_REGISTER,
+  GET_USER,
+  SUCCESSFULL_LOGIN,
+  ERROR_LOGIN,
+  CLOSE_SESSION
+} from '../../types';
 
 
 export default (state, action) => {
   switch (action.type) {
-    case SHOW_ALERT:
-      return {
-        alert: action.payload
-      }
-    case HIDE_ALERT:
-      return {
-        alert: null
-      }
-
+    
     default:
       return state;
   }
