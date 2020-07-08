@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alerts/alertContext';
+import AuthenticationContext from '../../context/authentication/authenticationContext';
 import { FaUserEdit } from "react-icons/fa";
 
 
@@ -9,6 +10,9 @@ const CreateAccount = () => {
   // Extract context values
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
+
+  const authenticationContext = useContext(AuthenticationContext);
+  const { userRegistration } = authenticationContext;
 
   // State for the login session
   const [user, saveUser] = useState({
@@ -54,7 +58,11 @@ const CreateAccount = () => {
     }
 
     // Pass to action
-
+    userRegistration({
+      name,
+      email,
+      password
+    });
   }
 
   return (
