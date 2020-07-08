@@ -26,16 +26,22 @@ const AuthenticationState = props =>  {
   const userRegistration = async data => {
     try {
       const response = await clientAxios.post('/api/users', data);
-      console.log(response);
+      console.log(response.data);
 
       dispatch({
-        type: SUCCESSFULL_REGISTER
+        type: SUCCESSFULL_REGISTER,
+        payload: response.data
       })
     } catch (error) {
-      console.log(error);
+      //console.log(error.response.data.msg);
+      const alert = {
+        msg: error.response.data.msg,
+        category: 'alert-error'
+      }
 
       dispatch({
-        type: ERROR_REGISTER
+        type: ERROR_REGISTER,
+        payload: alert
       })
     }
   }
