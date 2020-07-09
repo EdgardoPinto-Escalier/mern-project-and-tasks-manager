@@ -1,18 +1,30 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alerts/alertContext';
 import AuthenticationContext from '../../context/authentication/authenticationContext';
 import { FaUserEdit } from "react-icons/fa";
 
 
-const CreateAccount = () => {
+const CreateAccount = (props) => {
 
   // Extract context values
   const alertContext = useContext(AlertContext);
   const { alert, showAlert } = alertContext;
 
   const authenticationContext = useContext(AuthenticationContext);
-  const { userRegistration } = authenticationContext;
+  const { message, authenticated, userRegistration } = authenticationContext;
+
+  // In case the user is authenticated/registered or duplicated register
+  useEffect(() => {
+    if(authenticated) {
+      props.history.push('/projects');
+    }
+
+    if(message) {
+      showAlert(message.msg, message.category);
+    }
+  }, [message, authenticated, props.history]);
+
 
   // State for the login session
   const [user, saveUser] = useState({
