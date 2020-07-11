@@ -1,2 +1,2 @@
-# mern-project-and-tasks-manager
-MERN Projects and tasks manager
+# MERN Projects And Tasks Manager
+## Full Stack Javascript Web Application for managing projects and tasks
