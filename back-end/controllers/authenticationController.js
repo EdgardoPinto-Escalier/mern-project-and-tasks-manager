@@ -48,3 +48,14 @@ exports.authenticateUser = async (req, res) => {
       console.log(error);
   }
 }
+
+// Get what user is authenticated
+exports.authenticateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+    res.json({user});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({msg: 'Something went wrong'});
+  }
+}
